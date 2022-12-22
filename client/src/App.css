@@ -12,7 +12,11 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 .App-header {
   /* background-color: #282c34; */
   /* background: linear-gradient(to right down,azure,yellow); */
@@ -25,6 +29,42 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+/* nav  */
+ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0px;
+ 
+}
+li{
+  list-style-type: none;
+  /* float: right; */
+  display: inline-block;
+  padding: 20px 40px;
+
+  border-bottom: rgba(0, 0, 0, 0) solid 3px;
+  transition: all 0.3s;
+
+}
+li:hover{
+
+    color: rgb(235, 169, 37);
+    border-bottom: rgb(235, 169, 37) solid 3px;
+  
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+
+
+
+
+
+/* header */
 h1{
   margin-top: 0;
   padding-top: 40px;
@@ -72,15 +112,57 @@ h1{
     transform: rotate(360deg);
   }
 }
-button{
+/* btn  */
+.btn{
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin: 0px 10px 10px;
+  transition: all .3s;
+  cursor: pointer;
+  text-align: center;
+  /* line-height: 50%; */
+  vertical-align: middle;
+
+}
+.btn-white{
+  background-color: #FFF;
+}
+.btn:hover{
+  background-color: #ddd;
+}
+.btn-round{
+  border-radius:50% ;
+  height: 40px;
+  width: 40px;
+}
+
+/* grid  */
+.hx-row{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+ /* paragraph  */
+ .p-heading{
+  font-size: 1.5rem;
   margin: 10px;
-  opacity: 0.8;
-  border: 2px solid black;
-  border-radius: 10px;
+  width: 250px;
+  text-align: left;
 }
-button:hover{
-  background-color: #999;
+.p-message{
+  font-size: 1.2rem;
+  margin: 10px;
 }
+.p-creator,.p-tags{
+  font-size: 1rem;
+  margin: 10px;
+}
+
+/* h2{
+
+
+} */
 @media screen and (max-width: 1105px){
 
   #postscol{

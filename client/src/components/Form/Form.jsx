@@ -69,8 +69,8 @@ const Form= ({currentId,setCurrentId})=>{
     return (
         <>
             <form >
-                <h2>Form</h2>
-                <label>Title of the Article</label><br />
+                <p className="p-heading">Form</p>
+                <label className="p-heading" >Title of the Article</label>
                 <input type="text" name="title" value={postMessage.title} onChange={(e)=>{setPostMessage({...postMessage,title:e.target.value})}}/><br />
                 <label>Text Message you wanna input</label><br />
                 <input type="text" name="message" value={postMessage.message} id="message" onChange={(e)=>{setPostMessage({...postMessage,message:e.target.value})}}/><br />
@@ -78,7 +78,7 @@ const Form= ({currentId,setCurrentId})=>{
                 <input type="text" name="creator" value={postMessage.creator} onChange={(e)=>{setPostMessage({...postMessage,creator:e.target.value})}}/><br />
                 <label>Tags</label><br />
                 <input type="text" name="tags" value={postMessage.tags} onChange={(e)=>{setPostMessage({...postMessage,tags:e.target.value.split(',')})}}/><br /> 
-                <FileBase type="file" multiple={false} value={postMessage.selectedFile} onDone={({ base64 }) => setPostMessage({ ...postMessage, selectedFile: base64 })} />
+                <FileBase className="btn btn-white" type="file" multiple={false} value={postMessage.selectedFile} onDone={({ base64 }) => setPostMessage({ ...postMessage, selectedFile: base64 })} />
                
                 {/* <input type="text" name="title"  onChange={(e)=>{setPostMessage({...postMessage,title:e.target.value})}}/><br />
                 <label>Text Message you wanna input</label><br />
@@ -95,7 +95,7 @@ const Form= ({currentId,setCurrentId})=>{
                 ></FileBase> */}
                 
                 {/* base64 should be a string, do not add {} around it while passing it to selected File  */}
-                <button type="submit" onClick={handleSubmit}>Way to go!</button>
+                <button className="btn btn-white" type="submit" onClick={handleSubmit}>Way to go!</button>
             </form>
         </>
         );

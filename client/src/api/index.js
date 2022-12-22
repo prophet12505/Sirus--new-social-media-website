@@ -2,8 +2,8 @@
 
 import axios from "axios";
 
-// const url='http://localhost:5000/posts'
-const url="https://sirus--social-media.herokuapp.com/posts"//hosted on heroku
+const url='http://localhost:5000/posts'
+// const url="https://sirus--social-media.herokuapp.com/posts"//hosted on heroku
 export const fetchPosts=()=>{
     try {
         const res= axios.get(url);

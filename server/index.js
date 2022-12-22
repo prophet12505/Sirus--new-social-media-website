@@ -23,8 +23,8 @@ app.get("/",(req,res)=>{res.send("welcome to sirus API")})
 
 
 // const CONNECT_URL="<your mongodb connection url>";
-//  const PORT=process.env.PORT|| 5000;
+const PORT=process.env.PORT|| 5000;
 
 mongoose.connect(process.env.CONNECT_URL)
-.then(app.listen(process.env.PORT,()=>{console.log(`server started at port ${process.env.PORT}`)}))
+.then(app.listen(PORT,()=>{console.log(`server started at port ${PORT}`)}))
 .catch(err=>{console.log(err.message)});

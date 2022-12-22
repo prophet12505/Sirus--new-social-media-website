@@ -17,15 +17,24 @@ function App() {
 
   return (
     <div className="App">
-
-      <header className="App-header">
-        <div id="headingbox">
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/">About us</a>
+          </li>
+        </ul>
+      </nav>
+      {/* <header className="App-header"> */}
+        {/* <div id="headingbox">
         <h1>Sirius -- find your best life</h1>
-        </div>
+        </div> */}
         
 
 
-      </header>
+      {/* </header> */}
       <section className="App-section">
         <div id="postscol" className='col'>
           <Posts currentId={currentId} setCurrentId={setCurrentId}></Posts>

@@ -4,6 +4,7 @@
         npm i axios moment react-file-base64 redux-thunk
         //npm i react-redux redux
         npm i @material-ui/core
+        
 ## server:
         npm init -y
         npm install mongoose nodemon express cors
@@ -17,6 +18,7 @@
         axios
         redux
         react-file-base64
+
 It's OK
 
     

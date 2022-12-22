@@ -1,78 +1,28 @@
 .card{
-    opacity: 0.9;
-    margin: 0;
-    padding: 0;
-    width: 230px;
+
+    width: 300px;
     min-width: 230px;
     margin: 10px;
-    border:2px solid;
+
     object-fit: contain;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 10px;
-    background-color: white;
-    color: black;
+    border-radius: 7px;
+    background-color: #FFF ;
+    color: #000;
     text-align: center;
-}
-.card:hover{
-    background-color: azure;
-    opacity: 0.8;
-}
-img{
-    max-width: 90%;
-    margin: 5px 5%;
+    position: relative;
 }
 
-img:hover{
+.post-img{
+    max-width: 100%;
+    /* margin: 5px 5%; */
+}
+
+.post-img:hover{
     cursor: pointer;
    
 }
 
-
-/* .card {
-    padding: 10px;
-    width: 380px;
-    height: 300px;
-    display: inline-block;
-    border-style: solid;
-    border-radius: 10px;
-    border-width: 2px;
-    margin: 1%;
-    text-align: center;
-
-
+.btn-update{
+   
 }
-
-.group-tag:hover {
-    opacity: 0.75;
-}
-
-.group-tag img {
-    margin: auto;
-    display: block;
-    width: 350px;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 10px;
-
-}
-
-.group-tag button {
-
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 5px;
-    display: block;
-    width: 25%;
-    height: 8%;
-    margin: auto;
-    opacity: 0.7;
-}
-
-.group-tag button:hover {
-    background-color: #000000;
-    color: #EEEEEE;
-}
-
-.group-tag p {
-    margin: 8px;
-} */
