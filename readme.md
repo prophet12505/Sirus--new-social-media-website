@@ -4,11 +4,14 @@
         npm i axios moment react-file-base64 redux-thunk
         //npm i react-redux redux
         npm i @material-ui/core
+        npm i jwt-decode react-google-login
+        npm install react-router-dom --save
         
 ## server:
         npm init -y
         npm install mongoose nodemon express cors
-        npm i .env //for the environment configuration
+        npm i .env //for the environment configuration  
+        npm i bcryptjs jsonwebtoken
 
 
 

@@ -1,0 +1,30 @@
+#postscol{
+
+    width: 70%;
+  
+  }
+  
+  #formcol{
+  
+    width: 25%;
+    padding-right: 25px;
+  }
+/* h2{
+
+
+} */
+@media screen and (max-width: 1105px){
+
+    #postscol{
+  
+      width: 90%;
+  
+    
+    }
+    
+    #formcol{
+      width: 25%;
+      padding-right: 25px;
+    }
+  }
+    

@@ -17,6 +17,8 @@
   padding: 0px;
   box-sizing: border-box;
 }
+body {font-family: Arial, Helvetica, sans-serif;}
+
 .App-header {
   /* background-color: #282c34; */
   /* background: linear-gradient(to right down,azure,yellow); */
@@ -29,36 +31,6 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-/* nav  */
-ul{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin: 0px;
- 
-}
-li{
-  list-style-type: none;
-  /* float: right; */
-  display: inline-block;
-  padding: 20px 40px;
-
-  border-bottom: rgba(0, 0, 0, 0) solid 3px;
-  transition: all 0.3s;
-
-}
-li:hover{
-
-    color: rgb(235, 169, 37);
-    border-bottom: rgb(235, 169, 37) solid 3px;
-  
-}
-a{
-  text-decoration: none;
-  color: #000;
-}
-
 
 
 
@@ -92,17 +64,6 @@ h1{
   color: #61dafb;
 }
 
-#postscol{
-
-  width: 70%;
-
-}
-
-#formcol{
-
-  width: 25%;
-  padding-right: 25px;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -159,67 +120,5 @@ h1{
   margin: 10px;
 }
 
-/* h2{
 
 
-} */
-@media screen and (max-width: 1105px){
-
-  #postscol{
-
-    width: 90%;
-
-  
-  }
-  
-  #formcol{
-    width: 25%;
-    padding-right: 25px;
-  }
-}
-
-
-/* I have to include a space between the and and ( */
-
-/* @media screen and (max-width: 1105px){
-
-  #postscol{
-
-    width: 90%;
-    color: aqua;
-  
-  }
-  
-  #formcol{
-    width: 25%;
-    padding-right: 25px;
-  }
-}
-
-@media screen and (max-width:768px){
-  #postscol{
-    width: 90%;
-  }
-  
-  #formcol{
- 
-    width: 25%;
-  }
-}
-@media screen and (min-width:600px){
-  #postscol{
-    margin-left: 25px;
-    width: 0.85vw;
-  
-  }
-  
-  #formcol{
-    margin-right: 25px;
-    width: 0.35vw;
-  }
-}
-@media only screen and (max-width: 376px) {
-  .App-section {
-    justify-content: flex-start;
-  }
-} */
