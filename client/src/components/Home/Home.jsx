@@ -15,7 +15,8 @@ const Home = () => {
       dispatch(getPosts());
     }, [currentId, dispatch]);
 
-    return (  <section className="App-section">
+    return (  
+    <section className="App-section">
     <div id="postscol" className='col'>
       <Posts currentId={currentId} setCurrentId={setCurrentId}></Posts>
     </div>
