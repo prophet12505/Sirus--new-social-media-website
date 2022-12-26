@@ -59,10 +59,9 @@ export const userSignup = async (req, res) => {
                console.log(`Email sent: ${info.response}`);
             }
          });
-
-
          res.status(201).json({ ...newAccountModel, signupSuccess: true });
       }
+
       //registered is not allowed
       else {
          console.log("duplicate email!");

@@ -3,7 +3,7 @@ import "./Auth.css"
 import { GoogleLogin } from 'react-google-login';
 import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
-import { useState } from "react";
+import  { useRef, useState } from 'react';
 import { userLogin, userSignup } from "../../actions/auth";
 
 import { useDispatch } from "react-redux";
@@ -50,7 +50,24 @@ const Auth = () => {
         
         showVerificationEmail();
     }
-    // google login API 
+    const inputFile=useRef(null);
+    const [avatarUrl, setAvatarUrl] = useState('img_avatar2.png');
+    function handleAvatarClick(e){
+        inputFile.current.click();
+    }
+    function handleInputFileChange(event){
+        const file = event.target.files[0];
+
+        const reader = new FileReader();
+    
+        reader.onload = (e) => {
+        setAvatarUrl(e.target.result);
+
+        setSignupData({ ...signupData, picture: e.target.result });
+        };
+        reader.readAsDataURL(file);
+        
+    }
 
 
 
@@ -62,7 +79,7 @@ const Auth = () => {
                 <form className="modal-content animate" action="/" method="post">
                     <div className="imgcontainer">
                         <span onClick={hideSignUp} className="close" title="Close Modal">&times;</span>
-                        <img src="img_avatar2.png" alt="Avatar" className="avatar" />
+                        <img src={avatarUrl} alt="Avatar" className="avatar" onClick={handleAvatarClick} />
                     </div>
 
                     <div class="signup-container">
@@ -78,7 +95,10 @@ const Auth = () => {
                         <label for="psw"><b>Password</b></label>
                         <input type="password" placeholder="Enter Password" name="psw"
                             onChange={(e) => { setSignupData({ ...signupData, password: e.target.value }) }}
-                            required ></input>
+                            required >
+
+                        </input>
+                        <input name="picture" type="file" ref={inputFile} onChange={handleInputFileChange} style={{display:'none'}}/>
 
                         <button className="btn-green" type="submit" onClick={handleSubmitSignup}>Signup</button>
                         <label>
