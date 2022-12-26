@@ -3,7 +3,9 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
  import postRouter from "./routes/posts.js";
+ import authRouter from "./routes/auth.js"
  import dotenv from "dotenv";
+//  const jwt = require('jsonwebtoken');
 
 
 const app=express();
@@ -17,7 +19,8 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 // cors configuration
 app.use(cors());
 app.use("/posts",postRouter);
-app.get("/",(req,res)=>{res.send("welcome to sirus API")})
+app.use("/auth",authRouter);
+app.get("/",(req,res)=>{res.send("welcome to sirus API")});
 
 
 
