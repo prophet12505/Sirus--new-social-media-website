@@ -14,6 +14,7 @@ export const fetchPosts=()=>{
         return res;
      } catch (error) {
          console.log(error);
+         
          //never log error.message, just log error
      }
 }

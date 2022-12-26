@@ -5,8 +5,8 @@ export default (accountData={loggedIn:false},action)=>{
     switch(action.type){
         case AUTH:
             {
-            
-
+            console.log("Action AUTH");
+            console.log(action.payload);
             //use the object returned from the server to replace the current account object
             return action.payload;
             }

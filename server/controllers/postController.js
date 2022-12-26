@@ -8,7 +8,7 @@ import mongoose from "mongoose";
     try {
         
         //PostMessage is a Constructor
-        console.log("newPostModel, post request received");
+        //console.log("newPostModel, post request received");
         await newPostModel.save();  
         
         //to modify
@@ -21,7 +21,7 @@ import mongoose from "mongoose";
 export const getPosts=
 async(req,res)=>{
     try {
-        console.log("PostMessages, get request received");
+        //console.log("PostMessages, get request received");
         const PostMessages=await PostMessage.find();       
         res.status(200).json(PostMessages);
     } catch (error) {

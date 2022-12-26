@@ -6,8 +6,7 @@ export const getPosts=()=>async(dispatch)=>{
         //api.fetchPosts didn't get response
         const {data}=await api.fetchPosts();
         //it returns an javascript object
-       
-        //I have to deconstruct; It's worth noting why
+        //I have to deconstruct; data is one field of the return object (It includes header, data, etc)
         dispatch({
             type:FETCH_ALL,
             payload:data

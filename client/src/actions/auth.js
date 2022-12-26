@@ -8,7 +8,7 @@ export const userLogin=(loginData)=>async(dispatch)=>{
         //     const {data}=await api.();
         const {data}=await api.login(loginData);
        
-        dispatch({
+        await dispatch({
             type:AUTH,
             payload:data
         });

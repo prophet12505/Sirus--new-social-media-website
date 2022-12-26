@@ -14,6 +14,9 @@ export const userLogin =
          if (!userData) {
             userData = { loggedIn: false };
          }
+         else{
+            userData = { ...userData,loggedIn: true };
+         }
          console.log(userData);
 
          res.status(201).json(userData);
