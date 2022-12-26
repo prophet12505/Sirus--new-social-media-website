@@ -1,4 +1,4 @@
-import { AUTH,LOGOUT,SIGNUP } from "../constants/actionType";
+import { AUTH,LOGOUT,SIGNUP,VERIFIED } from "../constants/actionType";
 
 export default (accountData={loggedIn:false},action)=>{
     //console.log("Reducer: ", posts, action);
@@ -25,6 +25,12 @@ export default (accountData={loggedIn:false},action)=>{
                 }
                 return accountData;     
             }
+        case VERIFIED:
+            {
+                console.log("Verified reducer launched");
+                console.log(action.payload);
+                return accountData; 
+        }
         default:
                 return accountData;
         }

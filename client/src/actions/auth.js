@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { AUTH,LOGOUT,SIGNUP } from "../constants/actionType";
+import { AUTH,LOGOUT,SIGNUP,VERIFIED } from "../constants/actionType";
 //export const updatePost=(id,post)=>async(dispatch)=>{
 export const userLogin=(loginData)=>async(dispatch)=>{
     try {
@@ -28,5 +28,16 @@ export const userSignup=(signupData)=>async(dispatch)=>{
     } catch (error) {
         console.log(error);
     }
+}
+export const confirmVerification=(_id)=>async(dispatch)=>{
+    try {
+        const {data}=await api.verifyEmail(_id);
 
+        dispatch({
+            type:VERIFIED,
+            payload:data
+        })
+    } catch (error) {
+        console.log(error);
+    }
 }

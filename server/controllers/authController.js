@@ -49,7 +49,7 @@ export const userSignup = async (req, res) => {
             from: process.env.SYSTEM_EMAIL_ACCOUNT,
             to: newAccountModel.email,
             subject: 'Email Verification from Sirus',
-            html: generateEmailHTML(newAccountModel.email, process.env.END_POINT + "auth/verify-email/" + newAccountModel._id)
+            html: generateEmailHTML(newAccountModel.email, process.env.END_POINT + "auth/" + newAccountModel._id+"/verify-email")
          };
 
          transporter.sendMail(message, (error, info) => {
@@ -83,3 +83,19 @@ export const getAuthPage = async (req, res) => {
       res.status(404).json({ error: error.message });
    }
 }
+export const verifyEmail = async (req,res) =>{
+   try {
+      console.log("verify email triggered");
+      const{id:_id}=req.params;//rename deconstruction
+      const accountToBeUpdated=await UserAccount.findById(_id);//return a new post
+      accountToBeUpdated.verified=true;
+      const response=await UserAccount.findByIdAndUpdate(_id,accountToBeUpdated,{new:true});
+      console.log("successfully verified");
+      console.log(response);
+      res.json(response);
+
+   } catch (error) {
+      console.log(error);
+      res.status(404).json({ error: error.message });
+   }
+} 

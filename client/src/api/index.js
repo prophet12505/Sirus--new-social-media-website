@@ -76,3 +76,20 @@ export const signup=(signupData)=>{
         console.log(error);
     }
 }
+export const verifyEmail=(_id)=>{
+    try {
+        const res=axios.get(loginURL+"/"+_id+"/verify-email");
+        //console.log(res);
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// export const verifyEmail=()=>{
+//     try {
+//         const res=axios.get(loginURL+"/signup",signupData);
+//     } catch (error) {
+        
+//     }
+// }

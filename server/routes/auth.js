@@ -1,5 +1,5 @@
 import express from "express";
-import { userLogin,getAuthPage,userSignup } from "../controllers/authController.js";
+import { userLogin,getAuthPage,userSignup,verifyEmail } from "../controllers/authController.js";
 
 const router=express.Router();
 
@@ -7,4 +7,5 @@ const router=express.Router();
 router.get('/login',getAuthPage);
 router.post('/login',userLogin);
 router.post('/signup',userSignup);
+router.get('/:id/verify-email',verifyEmail);
 export default router;
