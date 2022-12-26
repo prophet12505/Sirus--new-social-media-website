@@ -41,7 +41,7 @@
         npm install mongoose nodemon express cors
         npm i .env //for the environment configuration  
         npm i bcryptjs jsonwebtoken
-
+        npm install nodemailer
 
 
 ## Study further：
