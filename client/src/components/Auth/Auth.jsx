@@ -7,47 +7,52 @@ import { useState } from "react";
 import { userLogin, userSignup } from "../../actions/auth";
 
 import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 
-// real scheme userAccount{
-//     "email"
-//     "name"
-//     "password"
-//     "picture"
-    
-// }
+
+
 const Auth = () => {
     function showSignUp() {
         document.getElementById('id01').style.display = 'block';
+    }
+    function showVerificationEmail(){
+        document.getElementById('id01').style.display = 'none';
+        document.getElementById('verification-email').style.display = 'block';
     }
     function hideSignUp() {
         document.getElementById('id01').style.display = 'none';
     }
 
-    const [loginData,setLoginData]=useState({
-        name:'',
-        email:'',
-        password:'',
-        picture:''
+    const [loginData, setLoginData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        picture: ''
     });
-    const [signupData,setSignupData]=useState({
-        name:'',
-        email:'',
-        password:'',
-        picture:''
+    const [signupData, setSignupData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        picture: ''
     });
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
 
-    function handleSubmitLogin(e){
+    function handleSubmitLogin(e) {
         e.preventDefault();
         dispatch(userLogin(loginData));
     }
-    function handleSubmitSignup(e){
+    function handleSubmitSignup(e) {
         e.preventDefault();
         dispatch(userSignup(signupData));
+
+
+        //need more logic to verify whether the mail is duplicated
+        
+        showVerificationEmail();
     }
     // google login API 
-   
-   
+
+
 
     return (
         <>
@@ -63,23 +68,23 @@ const Auth = () => {
                     <div class="signup-container">
                         <label for="uname"><b>Username</b></label>
                         <input type="text" placeholder="Enter Username" name="uname"
-                        onChange={(e)=>{setSignupData({...signupData,name:e.target.value})}}
-                        required ></input>
+                            onChange={(e) => { setSignupData({ ...signupData, name: e.target.value }) }}
+                            required ></input>
                         <label for="email"><b>Email</b></label>
-                        <input type="email" placeholder="Enter Email" name="email" 
-                        onChange={(e)=>{setSignupData({...signupData,email:e.target.value})}}
-                        required ></input>
+                        <input type="email" placeholder="Enter Email" name="email"
+                            onChange={(e) => { setSignupData({ ...signupData, email: e.target.value }) }}
+                            required ></input>
 
                         <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" 
-                        onChange={(e)=>{setSignupData({...signupData,password:e.target.value})}}
-                        required ></input>
+                        <input type="password" placeholder="Enter Password" name="psw"
+                            onChange={(e) => { setSignupData({ ...signupData, password: e.target.value }) }}
+                            required ></input>
 
                         <button className="btn-green" type="submit" onClick={handleSubmitSignup}>Signup</button>
                         <label>
                             <input type="checkbox" checked="checked" name="remember" ></input> Remember me
                         </label>
-                        
+
                     </div>
 
                     {/* <div class="container" style="background-color:#f1f1f1">
@@ -88,8 +93,16 @@ const Auth = () => {
                         </div> */}
                 </form>
             </div>
-
-
+            {/* signup -- email verification  */}
+            <div id="verification-email" className="verification-email modal">
+                <div className="modal-content">
+                <h1>Verification Email Sent</h1>
+                <p>A verification email has been sent to your inbox. Please follow the instructions in the email to complete the verification process.</p>
+                <Link to="/">
+                    <button className="return-home-button">Return Home</button>
+                </Link>
+                </div>
+            </div>
 
             <div className="login-container">
 
@@ -97,17 +110,17 @@ const Auth = () => {
                 <form action="/login" method="post">
                     {/* <label for="username">Username:</label><br />
                     <input type="text" id="username" name="username" placeholder="Enter your username" /><br /> */}
-                     <label for="email">Email:</label><br />
-                    <input type="email" id="email" name="email" placeholder="Enter your email" 
-                     onChange={(e)=>{setLoginData({...loginData,email:e.target.value})}}
-                    required /><br />
+                    <label for="email">Email:</label><br />
+                    <input type="email" id="email" name="email" placeholder="Enter your email"
+                        onChange={(e) => { setLoginData({ ...loginData, email: e.target.value }) }}
+                        required /><br />
                     <label for="password">Password:</label><br />
-                    <input type="password" id="password" name="psw" placeholder="Enter your password" 
-                    onChange={(e)=>{setLoginData({...loginData,password:e.target.value})}}
-                    required  /><br /><br />
-                    
-                    
-    
+                    <input type="password" id="password" name="psw" placeholder="Enter your password"
+                        onChange={(e) => { setLoginData({ ...loginData, password: e.target.value }) }}
+                        required /><br /><br />
+
+
+
                     {/* Google Login Button */}
                     <div id="buttonDiv"></div>
 

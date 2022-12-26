@@ -173,3 +173,37 @@ span.psw {
      width: 100%;
   }
 }
+
+
+/* verification email  */
+.verification-email {
+  text-align: center;
+  /* display: none; */
+}
+
+.verification-email h1 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.verification-email p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.return-home-button {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 20px 0px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: blue;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.return-home-button:hover {
+  background-color: darkblue;
+}
