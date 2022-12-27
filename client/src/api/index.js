@@ -10,9 +10,9 @@ const loginURL="http://localhost:5000/auth"
 export const fetchPosts=()=>{
     try {
         const res= axios.get(url);
-        console.log(res);
+       // console.log(res);
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
-        console.log(axios.defaults.headers.common['Authorization']);
+        //console.log(axios.defaults.headers.common['Authorization']);
         return res;
      } catch (error) {
          console.log(error);
@@ -61,14 +61,21 @@ export const likePost=(id)=>{
 //account apis
 export const login=async (loginData)=>{
     try {
-        const res=await axios.post(loginURL+"/login",loginData)
-        localStorage.setItem('token', 'Bearer ' + res.data.token);
-        //console.log("res");
-        //console.log(res);
-        //axios.defaults.headers.common.Authorization = 'Bearer ' + res.data.token;
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
-        //extract the token
-        console.log(axios.defaults.headers.common['Authorization'].split(' ')[1]);
+        
+        const res=await axios.post(loginURL+"/login",loginData);
+        
+        //successfully logged in
+        if(res.data.loggedIn)
+        {
+            console.log( res.data);
+            localStorage.setItem('token', 'Bearer ' + res.data.token);
+
+            //axios.defaults.headers.common.Authorization = 'Bearer ' + res.data.token;
+            axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+            //extract the token
+            //console.log(axios.defaults.headers.common['Authorization'].split(' ')[1]);
+        }
+
         return res;
 
     } catch (error) {
@@ -94,7 +101,14 @@ export const verifyEmail=(_id)=>{
         console.log(error);
     }
 }
-
+export const fetchUserByJWTToken=(_id)=>{
+    try {
+        const res=axios.get(loginURL+"/"+_id+"/get-user-by-JWT-token");
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+}
 // export const verifyEmail=()=>{
 //     try {
 //         const res=axios.get(loginURL+"/signup",signupData);

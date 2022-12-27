@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { AUTH,LOGOUT,SIGNUP,VERIFIED } from "../constants/actionType";
+import { AUTH,LOGOUT,SIGNUP,VERIFIED,GET_USER_BY_JWT } from "../constants/actionType";
 //export const updatePost=(id,post)=>async(dispatch)=>{
 export const userLogin=(loginData)=>async(dispatch)=>{
     try {
@@ -40,6 +40,24 @@ export const confirmVerification=(_id)=>async(dispatch)=>{
             type:VERIFIED,
             payload:data
         })
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const getUserByJWTToken=(token)=>async(dispatch)=>{
+    try {
+        //empty token will triger error
+        //console.log("token:");
+        //console.log(token);
+        if(token){
+            const {data}=await api.fetchUserByJWTToken(token);
+       
+            dispatch({
+                type:GET_USER_BY_JWT,
+                payload:data
+            });
+        }
+        
     } catch (error) {
         console.log(error);
     }

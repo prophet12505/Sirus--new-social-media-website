@@ -9,3 +9,4 @@ export const AUTH="AUTH";
 export const SIGNUP="SIGNUP";
 export const LOGOUT="LOGOUT";
 export const VERIFIED="VERIFIED";
+export const GET_USER_BY_JWT="GET_USER_BY_JWT";

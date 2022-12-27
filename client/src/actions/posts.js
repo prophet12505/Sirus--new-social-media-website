@@ -2,7 +2,7 @@ import * as api from "../api";
 import { LIKE,DELETE,UPDATE,FETCH_ALL,CREATE } from "../constants/actionType";
 export const getPosts=()=>async(dispatch)=>{
     try {
-        console.log("get posts action launched");
+        //console.log("get posts action launched");
         //api.fetchPosts didn't get response
         const {data}=await api.fetchPosts();
         //it returns an javascript object

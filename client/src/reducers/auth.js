@@ -1,4 +1,4 @@
-import { AUTH,LOGOUT,SIGNUP,VERIFIED } from "../constants/actionType";
+import { AUTH,LOGOUT,SIGNUP,VERIFIED,GET_USER_BY_JWT } from "../constants/actionType";
 
 export default (accountData={loggedIn:false},action)=>{
     //console.log("Reducer: ", posts, action);
@@ -27,9 +27,14 @@ export default (accountData={loggedIn:false},action)=>{
             }
         case VERIFIED:
             {
-                console.log("Verified reducer launched");
-                console.log(action.payload);
+                //console.log("Verified reducer launched");
+                //console.log(action.payload);
                 return accountData; 
+        }
+        case GET_USER_BY_JWT:{
+            //console.log("GET_USER_BY_JWT reducer launched");
+            console.log(action.payload);
+            return action.payload;
         }
         default:
                 return accountData;

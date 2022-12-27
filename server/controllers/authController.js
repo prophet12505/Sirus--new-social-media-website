@@ -5,6 +5,7 @@ import generateEmailHTML from "../Utilities/generateEmailHTML.js";
 
 
 import jwt from 'jsonwebtoken';
+import { ObjectId } from "mongodb";
 // const authenticate = jwt({
 //    secret: process.env.JWT_SECRET,
 //    algorithms: ['HS256']
@@ -16,7 +17,6 @@ export const userLogin =
       try {
 
          const loginData = req.body;
-
          console.log(loginData);
          let userData = await UserAccount.findOne({ email: loginData.email, password: loginData.password });
          //email and password doesn't match
@@ -24,17 +24,17 @@ export const userLogin =
             userData = { loggedIn: false };
          }
          //email and password match
-         else{
-         
-            
-            const token = jwt.sign({id:userData._id}, process.env.JWT_SECRET, {
+         else {
+
+
+            const token = jwt.sign({ id: userData._id }, process.env.JWT_SECRET, {
                algorithm: 'HS256',
-               expiresIn: '1h'
-             });
-             userData = { ...userData,loggedIn: true ,token:token};
+               expiresIn: '1d'
+            });
+            userData = { ...userData, loggedIn: true, token: token };
          }
-         console.log("userData:");
-         console.log(userData);
+         //console.log("userData:");
+         //console.log(userData);
 
          res.status(201).json(userData);
       } catch (error) {
@@ -58,18 +58,18 @@ export const userSignup = async (req, res) => {
          //send the email verification
          const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
-            
+
             auth: {
                user: process.env.SYSTEM_EMAIL_ACCOUNT,
                pass: process.env.SYSTEM_EMAIL_PWD
             }
          });
-         
+
          const message = {
             from: process.env.SYSTEM_EMAIL_ACCOUNT,
             to: newAccountModel.email,
             subject: 'Email Verification from Sirus',
-            html: generateEmailHTML(newAccountModel.email, process.env.END_POINT + "auth/" + newAccountModel._id+"/verify-email")
+            html: generateEmailHTML(newAccountModel.email, process.env.END_POINT + "auth/" + newAccountModel._id + "/verify-email")
          };
 
          transporter.sendMail(message, (error, info) => {
@@ -93,22 +93,45 @@ export const userSignup = async (req, res) => {
       res.status(404).json({ error: error.message });
    }
 }
-export const getAuthPage = async (req, res) => {
+export const getUserByJWTToken = async (req, res) => {
    try {
-      console.log("getAuthPage controller triggered");
-      res.status(201).json({ message: "get auth page success" });
+     
+      const token = req.params.id;
+      console.log("getUserByJWtAPI");
+      
+      jwt.verify(token, process.env.JWT_SECRET,  async (err, decoded) => {
+         //console.log("getUserByJWTToken controller triggered");
+         //console.log("decoded");
+         //console.log(decoded);
+         if (err) {
+            // If there was an error, return a 401 status code
+            console.log("getUserByJWTTokenERROR"+err);
+            return res.sendStatus(401);
+         }
+         // If the JWT was successfully decoded, return the decoded payload
+         const userProfile = await UserAccount.findById(decoded.id );
+         //console.log("userProfile");
+         //console.log(userProfile);
+         res.json({...userProfile,getUserByJWTTokenSuccess:true,loggedIn:true});
+      });
+      //res.status(201).json({ message: "get auth page success" });
    } catch (error) {
       console.log(error);
       res.status(404).json({ error: error.message });
    }
 }
-export const verifyEmail = async (req,res) =>{
+
+
+
+
+
+export const verifyEmail = async (req, res) => {
    try {
       console.log("verify email triggered");
-      const{id:_id}=req.params;//rename deconstruction
-      const accountToBeUpdated=await UserAccount.findById(_id);//return a new post
-      accountToBeUpdated.verified=true;
-      const response=await UserAccount.findByIdAndUpdate(_id,accountToBeUpdated,{new:true});
+      const { id: _id } = req.params;//rename deconstruction
+      const accountToBeUpdated = await UserAccount.findById(_id);//return a new post
+      accountToBeUpdated.verified = true;
+      const response = await UserAccount.findByIdAndUpdate(_id, accountToBeUpdated, { new: true });
       console.log("successfully verified");
       console.log(response);
       res.json(response);
