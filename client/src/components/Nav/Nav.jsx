@@ -68,10 +68,11 @@ const Nav = () => {
   const toggleDropdown = () => {
     setShowDropdown((prevShowDropdown) => !prevShowDropdown);
   };
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   function handleLogOut(){
+    console.log("handle logout");
     localStorage.removeItem('token');
-    navigate('/');
+    window.location.reload();
   }
   return (
     <div>

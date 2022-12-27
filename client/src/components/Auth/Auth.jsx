@@ -1,6 +1,6 @@
 import React from "react"
 import "./Auth.css"
-import { GoogleLogin } from 'react-google-login';
+import GoogleLogin from "./GoogleLogin";
 import { useEffect } from "react";
 
 import jwt_decode from "jwt-decode";
@@ -164,7 +164,7 @@ const Auth = () => {
 
 
                     {/* Google Login Button */}
-                    <div id="buttonDiv"></div>
+                    <GoogleLogin></GoogleLogin>
 
                     <button className="btn btn-green" type="button" onClick={showSignUp} >Create New Account</button>
                     <button className="btn-submit" id="submit-login" name="submit" type="button" onClick={handleSubmitLogin}>Submit</button>

@@ -15,17 +15,19 @@ const Post= ({post,currentId,setCurrentId})=>{
             
             <div className="card">
             
-            <div className="hx-row">
-                <p className="p-heading">{post.title}</p>
+            <div className="card-top">
+                <p className="p-creator">{post.creator||"anynomous author"}</p>
                 <button className="btn btn-white btn-round btn-update" onClick={()=>{setCurrentId(post._id)}}>...</button>
             </div>
-
+            
+            <div className="preview-img"><img className="post-img" src={post.selectedFile} alt="graph" /></div>
 
             <p className="p-message">{post.message}</p>
-            <p className="p-creator">{post.creator||""}</p>
+            <p className="p-heading">{post.title}</p>
+            
             <p className="p-tags">{post.tags && post.tags.map(tag=>" #"+tag)}</p>
             
-            <img className="post-img"src={post.selectedFile} alt="graph" />
+           
             
             <div className="buttonGroup">
              

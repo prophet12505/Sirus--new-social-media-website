@@ -52,9 +52,10 @@ h1{
   background-color: #eee;
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap-reverse;
-  align-items:flex-end;
-  justify-content: center;
+  /* flex-wrap:wrap-reverse; */
+  flex-wrap: nowrap;
+  align-items:flex-start;
+  justify-content:center;
   font-size: calc(10px + 2vmin);
   color: white;
 }

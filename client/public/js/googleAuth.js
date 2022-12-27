@@ -1,6 +1,12 @@
+// import { useSelector } from '../../node_modules/react-redux';
 
+import { useSelector } from '../../node_modules/react-redux'
 var loginToken={};
 var decodedLoginToken = {};
+// const loggedAccountStore = useSelector((state) =>
+//         state.auth
+//         //state.auth
+//     );
 
 //parse Jwt to Json
 function parseJwt (token) {

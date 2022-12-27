@@ -1,19 +1,22 @@
 #postscol{
-
+    display: inline-block;
     width: 70%;
   
   }
-  
+  /* .App-section{
+    display: flex;
+    flex-direction: row;
+  } */
   #formcol{
-  
-    width: 25%;
+    display: inline-block;
+    width: 400px;
     padding-right: 25px;
   }
 /* h2{
 
 
 } */
-@media screen and (max-width: 1105px){
+/* @media screen and (max-width: 1105px){
 
     #postscol{
   
@@ -23,8 +26,9 @@
     }
     
     #formcol{
-      width: 25%;
+      
+      
       padding-right: 25px;
     }
-  }
+  } */
     

@@ -69,15 +69,15 @@ const Form= ({currentId,setCurrentId})=>{
     return (
         <>
             <form >
-                <p className="p-heading">Form</p>
-                <label className="p-heading" >Title of the Article</label>
-                <input type="text" name="title" value={postMessage.title} onChange={(e)=>{setPostMessage({...postMessage,title:e.target.value})}}/><br />
-                <label>Text Message you wanna input</label><br />
-                <input type="text" name="message" value={postMessage.message} id="message" onChange={(e)=>{setPostMessage({...postMessage,message:e.target.value})}}/><br />
-                <label>Author</label><br />
-                <input type="text" name="creator" value={postMessage.creator} onChange={(e)=>{setPostMessage({...postMessage,creator:e.target.value})}}/><br />
-                <label>Tags</label><br />
-                <input type="text" name="tags" value={postMessage.tags} onChange={(e)=>{setPostMessage({...postMessage,tags:e.target.value.split(',')})}}/><br /> 
+                {/* <p className="p-heading">Form</p> */}
+                <label  >Title of the Article</label> 
+                <input className="input-line-text" type="text" name="title" placeholder="title" maxlength="30" value={postMessage.title} onChange={(e)=>{setPostMessage({...postMessage,title:e.target.value})}}/>
+                <label>Text Message you wanna input</label>
+                <input className="input-line-text" type="text" name="message" placeholder="message" value={postMessage.message} id="message" onChange={(e)=>{setPostMessage({...postMessage,message:e.target.value})}}/>
+                <label>Author</label>
+                <input className="input-line-text" type="text" name="creator" placeholder="autor" value={postMessage.creator} onChange={(e)=>{setPostMessage({...postMessage,creator:e.target.value})}}/>
+                <label>Tags</label>
+                <input className="input-line-text" type="text" name="tags" placeholder="tags" value={postMessage.tags} onChange={(e)=>{setPostMessage({...postMessage,tags:e.target.value.split(',')})}}/>
                 <FileBase className="btn btn-white" type="file" multiple={false} value={postMessage.selectedFile} onDone={({ base64 }) => setPostMessage({ ...postMessage, selectedFile: base64 })} />
                
                 {/* <input type="text" name="title"  onChange={(e)=>{setPostMessage({...postMessage,title:e.target.value})}}/><br />
