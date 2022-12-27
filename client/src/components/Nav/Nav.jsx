@@ -21,8 +21,15 @@ const Nav = () => {
       if (loggedAccountStore) {
         setAccountNavItem(
           loggedAccountStore.loggedIn ?
-            <img className="profile-photo" src={loggedAccountStore._doc.picture} alt="profile photo" />
-            : <a href="/auth">Login/Sign Up</a>
+          <div className="profile-photo-box"
+          onMouseEnter={toggleDropdown}
+          onMouseLeave={toggleDropdown}
+          >
+            <img 
+            className="profile-photo" 
+            src={loggedAccountStore._doc.picture} 
+            alt="profile photo" />
+            </div>: <a href="/auth">Login/Sign Up</a>
         )
 
         //const token=localStorage.getItem('token').split(' ')[1];
@@ -45,35 +52,67 @@ const Nav = () => {
     }, []
   )
   function setToken() {
-    
-    const token = localStorage.getItem('token').split(' ')[1];
-    if(!loggedAccountStore.loggedIn && token){
+    if(localStorage.getItem('token')){
+      const token = localStorage.getItem('token').split(' ')[1];
+    if (!loggedAccountStore.loggedIn && token) {
       dispatch(getUserByJWTToken(token));
     }
+    }
+    
   }
   //const settokenInterval=setInterval(setToken,5000);
   setToken();
-  return (<nav>
-    <ul >
-      <div className="nav-list">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="https://prophet12505.github.io/HTML-CSS-JS-portfolio-Website-" target="_blank">About author</a>
-        </li>
-      </div>
-      <div className="nav-list" id="account-nav-item">
-        <li >
-          {accountNavItem}
-        </li>
-      </div>
 
-    </ul>
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setShowDropdown((prevShowDropdown) => !prevShowDropdown);
+  };
+  const navigate = useNavigate();
+  function handleLogOut(){
+    localStorage.removeItem('token');
+    navigate('/');
+  }
+  return (
+    <div>
+      <nav>
+        <ul >
+          <div className="nav-list">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="https://prophet12505.github.io/HTML-CSS-JS-portfolio-Website-" target="_blank">About author</a>
+            </li>
+          </div>
+          <div className="nav-list" id="account-nav-item">
+            <li >
+              {accountNavItem}
+            </li>
+
+          </div>
+
+        </ul>
 
 
 
-  </nav>);
+      </nav>
+      {showDropdown && (
+        <div id="nav-user-panel" onMouseEnter={toggleDropdown}
+          onMouseLeave={toggleDropdown}>
+
+          <img className="profile-photo" src={loggedAccountStore._doc.picture} alt="profile photo" /><hr />
+          <p className="p-heading">{loggedAccountStore._doc.name}</p><hr />
+          <p className="p-message">{loggedAccountStore._doc.email}</p>
+
+          <button className="btn btn-green" onClick={handleLogOut}>Log Out</button>
+        </div>
+      )}
+
+    </div>
+
+
+  );
 }
 
 export default Nav;

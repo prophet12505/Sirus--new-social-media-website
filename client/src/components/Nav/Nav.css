@@ -39,11 +39,14 @@ ul{
     margin: auto;
     align-items: center;
   }
-  
+  .profile-photo-box{
+    
+  }
   .profile-photo{
-    max-height: 50px;
+    max-height: 60px;
     padding: 0px;
     margin: 0px auto;
+   
     border: 0.5px solid black;
     border-radius: 50%;
     transition: all .3s;
@@ -64,4 +67,20 @@ ul{
   }
   .nav-list li{
     padding: 10px 20px; 
+  }
+  #nav-user-panel{
+    display: inline-block;
+    opacity: 0.95;
+    transition: all .6s;
+    background-color: #FFF;
+    width: 300px;
+    height: 240px;
+    z-index: 1;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    float: right;
+    padding: 20px;
+    border: 0.5px solid rgba(0, 0, 0, 0.447);
+    border-radius: 2px;
   }
