@@ -6,8 +6,11 @@ export const userLogin=(loginData)=>async(dispatch)=>{
        
 
         //     const {data}=await api.();
-        const {data}=await api.login(loginData);
-       
+        
+        const responseData=await api.login(loginData);
+        console.log("responseData:");
+        console.log(responseData);
+        const {data}=responseData;
         await dispatch({
             type:AUTH,
             payload:data

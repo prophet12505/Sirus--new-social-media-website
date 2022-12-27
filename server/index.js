@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 app.use("/posts",postRouter);
 app.use("/auth",authRouter);
+
 app.get("/",(req,res)=>{res.send("welcome to sirus API")});
 
 

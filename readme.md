@@ -42,6 +42,7 @@
         npm i .env //for the environment configuration  
         npm i bcryptjs jsonwebtoken
         npm install nodemailer
+        npm i express-jwt
 
 
 ## Study further：

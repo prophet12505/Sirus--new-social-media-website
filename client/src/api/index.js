@@ -11,6 +11,8 @@ export const fetchPosts=()=>{
     try {
         const res= axios.get(url);
         console.log(res);
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
+        console.log(axios.defaults.headers.common['Authorization']);
         return res;
      } catch (error) {
          console.log(error);
@@ -57,10 +59,16 @@ export const likePost=(id)=>{
 
 
 //account apis
-export const login=(loginData)=>{
+export const login=async (loginData)=>{
     try {
-        const res=axios.post(loginURL+"/login",loginData);
-        console.log(res);
+        const res=await axios.post(loginURL+"/login",loginData)
+        localStorage.setItem('token', 'Bearer ' + res.data.token);
+        //console.log("res");
+        //console.log(res);
+        //axios.defaults.headers.common.Authorization = 'Bearer ' + res.data.token;
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+        //extract the token
+        console.log(axios.defaults.headers.common['Authorization'].split(' ')[1]);
         return res;
 
     } catch (error) {

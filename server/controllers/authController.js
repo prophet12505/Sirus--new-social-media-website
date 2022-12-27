@@ -2,6 +2,15 @@ import UserAccount from "../models/UserAcccount.js";
 import mongoose from "mongoose";
 import nodemailer from "nodemailer";
 import generateEmailHTML from "../Utilities/generateEmailHTML.js";
+
+
+import jwt from 'jsonwebtoken';
+// const authenticate = jwt({
+//    secret: process.env.JWT_SECRET,
+//    algorithms: ['HS256']
+//  });
+
+
 export const userLogin =
    async (req, res) => {
       try {
@@ -10,13 +19,21 @@ export const userLogin =
 
          console.log(loginData);
          let userData = await UserAccount.findOne({ email: loginData.email, password: loginData.password });
-         // const userData=queryForAccountData[0];
+         //email and password doesn't match
          if (!userData) {
             userData = { loggedIn: false };
          }
+         //email and password match
          else{
-            userData = { ...userData,loggedIn: true };
+         
+            
+            const token = jwt.sign({id:userData._id}, process.env.JWT_SECRET, {
+               algorithm: 'HS256',
+               expiresIn: '1h'
+             });
+             userData = { ...userData,loggedIn: true ,token:token};
          }
+         console.log("userData:");
          console.log(userData);
 
          res.status(201).json(userData);
