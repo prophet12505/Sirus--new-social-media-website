@@ -1,4 +1,4 @@
-import { AUTH,LOGOUT,SIGNUP,VERIFIED,GET_USER_BY_JWT } from "../constants/actionType";
+import { AUTH,LOGOUT,SIGNUP,VERIFIED,GET_USER_BY_JWT,GOOGLE_AUTH } from "../constants/actionType";
 
 export default (accountData={loggedIn:false},action)=>{
     //console.log("Reducer: ", posts, action);
@@ -10,6 +10,11 @@ export default (accountData={loggedIn:false},action)=>{
             //use the object returned from the server to replace the current account object
             return action.payload;
             }
+        case GOOGLE_AUTH:{
+            console.log("reducer GOOGLE_AUTH");
+            console.log(action.payload);
+            return action.payload;
+        }
         case SIGNUP:
             {
                 //with success

@@ -71,7 +71,7 @@ const Form= ({currentId,setCurrentId})=>{
             <form >
                 {/* <p className="p-heading">Form</p> */}
                 <label  >Title of the Article</label> 
-                <input className="input-line-text" type="text" name="title" placeholder="title" maxlength="30" value={postMessage.title} onChange={(e)=>{setPostMessage({...postMessage,title:e.target.value})}}/>
+                <input className="input-line-text" type="text" name="title" placeholder="title" maxLength="25" value={postMessage.title} onChange={(e)=>{setPostMessage({...postMessage,title:e.target.value})}}/>
                 <label>Text Message you wanna input</label>
                 <input className="input-line-text" type="text" name="message" placeholder="message" value={postMessage.message} id="message" onChange={(e)=>{setPostMessage({...postMessage,message:e.target.value})}}/>
                 <label>Author</label>

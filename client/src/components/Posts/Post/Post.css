@@ -39,3 +39,12 @@
     display: flex;
     justify-content: space-between;
 }
+.tag{
+    
+    /* color: #FFF; */
+    font-weight: 500;
+    display: inline-block;
+    margin: 0 5px;
+    padding: 2px 5px;
+    border-radius: 15px;
+}

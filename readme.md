@@ -35,7 +35,8 @@
         npm i @material-ui/core
         npm i jwt-decode react-google-login
         npm install react-router-dom --save
-        
+        npm i @react-ouath/google
+        npm install --save @redux-devtools/extension
 ## server:
         npm init -y
         npm install mongoose nodemon express cors

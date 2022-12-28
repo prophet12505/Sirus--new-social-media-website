@@ -12,13 +12,22 @@ const Nav = () => {
     //state.auth
   );
   const [accountNavItem, setAccountNavItem] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
   const dispatch = useDispatch();
   //if the store in the useEffect has changed, put it into the useEffect to make sure it's up-to-date because it's asynchronous
   useEffect(
     () => {
-
+      //There is a google account
+      if(localStorage.getItem('googleAccount')){
+        setUserInfo(localStorage.getItem('googleAccount'));
+      }
+      else if(loggedAccountStore){
+        setUserInfo(loggedAccountStore._doc);
+      }
 
       if (loggedAccountStore) {
+        console.log("loggedAccountStore");
+        console.log(loggedAccountStore);
         setAccountNavItem(
           loggedAccountStore.loggedIn ?
           <div className="profile-photo-box"
@@ -30,11 +39,9 @@ const Nav = () => {
             src={loggedAccountStore._doc.picture} 
             alt="profile photo" />
             </div>: <a href="/auth">Login/Sign Up</a>
+          
         )
-
-        //const token=localStorage.getItem('token').split(' ')[1];
-        //dispatch(getUserByJWTToken(token));
-        //if(loggedAccountStore.getUserByJWTTokenSuccess);
+        
 
       }
       console.log(loggedAccountStore);

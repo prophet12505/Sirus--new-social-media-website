@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { AUTH,LOGOUT,SIGNUP,VERIFIED,GET_USER_BY_JWT } from "../constants/actionType";
+import { AUTH,LOGOUT,SIGNUP,VERIFIED,GET_USER_BY_JWT,GOOGLE_AUTH } from "../constants/actionType";
 //export const updatePost=(id,post)=>async(dispatch)=>{
 export const userLogin=(loginData)=>async(dispatch)=>{
     try {
@@ -17,6 +17,16 @@ export const userLogin=(loginData)=>async(dispatch)=>{
         });
     } catch (error) {
         console.log(error);
+    }
+}
+export const googleLogin=(loginData)=>async(dispatch)=>{
+    try {
+        await dispatch({
+            type:GOOGLE_AUTH,
+            payload:loginData
+        });
+    } catch (error) {
+        
     }
 }
 

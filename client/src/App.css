@@ -107,14 +107,20 @@ h1{
 }
  /* paragraph  */
  .p-heading{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 10px;
   width: 250px;
   text-align: left;
 }
 .p-message{
-  font-size: 1.2rem;
+  font-size: 1rem;
+  color: #777;
   margin: 10px;
+  height: 4rem; /* Maximum height in pixels */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  text-align: left;
 }
 .p-creator,.p-tags{
   font-size: 1rem;

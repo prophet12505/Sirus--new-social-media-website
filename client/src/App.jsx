@@ -8,11 +8,13 @@ import EmailVerificationSuccess from './components/Auth/EmailAuth/EmailVerificat
 
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
 
 
   return (
+    <GoogleOAuthProvider clientId="872960135632-2irvivn8qk2bnqn86bin0g3m4punsnfh.apps.googleusercontent.com">
     <BrowserRouter>
       <div className="App">
     
@@ -32,6 +34,7 @@ function App() {
 
       </div>
     </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }
 
