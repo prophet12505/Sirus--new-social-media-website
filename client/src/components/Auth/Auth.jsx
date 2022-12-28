@@ -52,6 +52,10 @@ const Auth = () => {
                     //jump to home pag
                     navigate('/');
                 }
+                else{
+                    //console.log('nonono');
+                    document.getElementById('loginErrorPrompt').style.display="block";
+                }
             }
             console.log(loggedAccountStore);
         }
@@ -61,7 +65,7 @@ const Auth = () => {
         //e.preventDefault();
         await dispatch(userLogin(loginData));
         //await dispatch(getPosts());
-
+        document.getElementById('loginErrorPrompt').style.visibility="visible";
 
     }
     function handleSubmitSignup(e) {
@@ -150,6 +154,7 @@ const Auth = () => {
             <div className="login-container">
 
                 <h1>Welcome! Please login to continue.</h1>
+                <p id="loginErrorPrompt">Your password and Email doesn't match</p>
                 <form action="/login" method="post">
                     {/* <label for="username">Username:</label><br />
                     <input type="text" id="username" name="username" placeholder="Enter your username" /><br /> */}

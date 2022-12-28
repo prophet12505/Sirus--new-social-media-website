@@ -95,7 +95,7 @@ const Form= ({currentId,setCurrentId})=>{
                 ></FileBase> */}
                 
                 {/* base64 should be a string, do not add {} around it while passing it to selected File  */}
-                <button className="btn btn-white" type="submit" onClick={handleSubmit}>Way to go!</button>
+                <button className="btn btn-green" type="submit" onClick={handleSubmit}>Let's go!</button>
             </form>
         </>
         );
