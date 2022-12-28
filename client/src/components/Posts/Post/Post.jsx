@@ -51,7 +51,7 @@ const Post= ({post,currentId,setCurrentId})=>{
       
       dispatch(likePost(post._id));
 
-      }}> like {post.likeCount}</button>
+      }}> Like {post.likeCount}</button>
                 <button  className="btn btn-white" onClick={()=>{
       
                     dispatch(deletePost(post._id));
